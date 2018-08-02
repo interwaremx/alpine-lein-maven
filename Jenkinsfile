@@ -12,7 +12,7 @@ pipeline {
       }
       steps {
         withDockerRegistry([ credentialsId: "DOCKERHUB_PWD", url: "" ]) {
-          sh 'docker push interwaremx/alpine-lein-maven:latest'
+          sh 'docker push interwaremx/alpine-lein-maven:1.0'
         }
       }
     }
