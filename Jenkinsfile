@@ -9,7 +9,7 @@ pipeline {
     stage('Login') {
       steps {
         withCredentials(bindings: [usernameColonPassword(credentialsId: 'DOCKERHUB_PWD', variable: 'USRPWD')]) {
-          sh "docker login -u=caudal -p=$USRPWD"
+          sh "docker login"
         }
 
       }
