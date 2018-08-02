@@ -6,12 +6,14 @@ pipeline {
         sh './build.sh'
       }
     }
-    stage('Login') {
+    stage('Publish') {
+      when {
+        branch 'master'
+      }
       steps {
-        withCredentials(bindings: [usernameColonPassword(credentialsId: 'DOCKERHUB_PWD', variable: 'USRPWD')]) {
-          sh "docker login"
+        withDockerRegistry([ credentialsId: "DOCKERHUB_PWD", url: "" ]) {
+          sh 'docker push interwaremx/alpine-lein-maven:latest'
         }
-
       }
     }
   }
