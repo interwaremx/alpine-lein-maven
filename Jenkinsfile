@@ -6,8 +6,12 @@ pipeline {
         sh './build.sh'
       }
     }
-  }
-  environment {
-    foo = 'barbazqux'
+    stage('Login') {
+      steps {
+       withCredentials([usernameColonPassword(credentialsId: 'DOCKERHUB_PWD', variable: 'USRPWD')]) {
+                    sh "echo '$USRPWD'"
+        } 
+      }
+    }
   }
 }
