@@ -8,9 +8,10 @@ pipeline {
     }
     stage('Login') {
       steps {
-       withCredentials([usernameColonPassword(credentialsId: 'DOCKERHUB_PWD', variable: 'USRPWD')]) {
-                    sh "echo '$USRPWD'"
-        } 
+        withCredentials(bindings: [usernameColonPassword(credentialsId: 'DOCKERHUB_PWD', variable: 'USRPWD')]) {
+          sh "docker login -u=caudal -p=$USRPWD"
+        }
+
       }
     }
   }
