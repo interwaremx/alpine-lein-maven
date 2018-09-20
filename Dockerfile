@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:slim 
+FROM frolvlad/alpine-oraclejdk8:full
 
 # Install Leiningen 
 ENV LEIN_ROOT 1 
